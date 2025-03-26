@@ -11,6 +11,9 @@ if fqval == 2:
 if fqval > 2:
     sys.exit()
 
+if fqval < 1:
+    sys.exit()
+
 if fqval == 1:
     print("")   
 
