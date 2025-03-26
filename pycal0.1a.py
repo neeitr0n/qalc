@@ -8,6 +8,9 @@ fqval = int(firstquestion)
 if fqval == 2:
     sys.exit()
 
+if fqval > 2:
+    sys.exit()
+
 if fqval == 1:
     print("")   
 
