@@ -3,21 +3,7 @@ import math
 
 print("it's a PYcal(PYthoncalculator) ver: 0.3a")
 print("")
-firstquestion = input("Wanna to start?(1=Y; 2=N): ")
-fqval = int(firstquestion)
-
-if fqval == 2:
-    sys.exit()
-
-if fqval > 2:
-    sys.exit()
-
-if fqval < 1:
-    sys.exit()
-
-if fqval == 1:
-    print("")   
-
+ 
 while True:
  print("Select operation:")
  print("1. Add")
