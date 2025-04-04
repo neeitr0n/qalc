@@ -1,7 +1,7 @@
 import sys
 import math
 
-print("it's a PYcal(PYthoncalculator) ver: 0.3a")
+print("it's a qalc ver: 0.3a")
 print("")
  
 while True:
