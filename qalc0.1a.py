@@ -1,6 +1,6 @@
 import sys
 
-print("it's a pycal(pythoncalculator) ver: 0.1a")
+print("it's a qalc ver: 0.1a")
 print("|")
 firstquestion = input("wanna to start?(1-y; 2-n): ")
 fqval = int(firstquestion)
