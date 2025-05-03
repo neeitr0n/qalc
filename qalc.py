@@ -3,12 +3,10 @@ import math
 
 def qalc():
 
-    print("It's a Qalc - Ver. 0.4")
+    print("It's a Qalc - Ver. 0.7")
     print("")
 
-    x = ()
-    y = ()
-    z = ()
+    global x,y,z
 
     def add(x,y):
         print()
@@ -46,59 +44,53 @@ def qalc():
         print()
 
     def qes(x,y,z):
-        x = int(input("Input the A - "))
-
-        y = int(input("Input the B - "))
-
-        z = int(input("Input the C - "))
-     
-        discr = y ** 2 - 4 * x * z 
-        print("Discriminant = %.2f" % discr)
-        print()
-
-        if discr > 0:
-            x1 = (-y + math.sqrt(discr)) / (2*x)
-            x2 = (-y - math.sqrt(discr)) / (2*x)
-            print("Two real roots:", x1,';', x2, "\n")
+        try:
+            x = float(input("Input the A - "))
+            y = float(input("Input the B - "))
+            z = float(input("Input the C - "))
+            
+            discr = y ** 2 - 4 * x * z 
+            print("Discriminant = %.2f" % discr)
             print()
-        elif discr == 0:
-            x3 = -y / (2*x)
-            print("Single root:", x3)
-            print()
-        else:
-            print("No real roots (complex solutions exist)")
-            print()
+
+            if discr > 0:
+                x1 = (-y + math.sqrt(discr)) / (2*x)
+                x2 = (-y - math.sqrt(discr)) / (2*x)
+                print("Two real roots:", x1,';', x2, "\n")
+            elif discr == 0:
+                x3 = -y / (2*x)
+                print("Single root:", x3, "\n")
+            else:
+                print("No real roots (complex solutions exist)\n")
+        except ValueError:
+            print("Error: Invalid input\n")
 
     def percentcal(x,y):
-        prcfirnumber = int(input("Enter the first number(main) -  "))
-        prcact = input("Enter the action(+; -; *; /) -  ")
-
-        prcsecnumber = int(input("Enter the second number(percent) - "))
-        print() 
-
-        if prcact == "+":
-            prcresult = prcfirnumber + prcfirnumber/100*prcsecnumber
-            print("Result: ",prcfirnumber,"+",prcsecnumber,"%","= ",prcresult)
+        try:
+            prcfirnumber = float(input("Enter the first number(main) - "))
+            prcact = input("Enter the action(+; -; *; /) - ").strip()
+            prcsecnumber = float(input("Enter the second number(percent) - "))
             print() 
 
-        elif prcact == "-":
-            prcresult = prcfirnumber - prcfirnumber/100*prcsecnumber
-            print("Result: ",prcfirnumber,"-",prcsecnumber,"%","= ",prcresult)
-            print() 
-
-        elif prcact == "*":
-            prcresult = prcfirnumber * (prcsecnumber / 100)
-            print("Result: ",prcfirnumber,"*",prcsecnumber,"%","= ",prcresult)
-            print() 
-
-        elif prcact == "/":
-            prcresult = prcfirnumber / (prcsecnumber / 100)
-            print("Result: ",prcfirnumber,"/",prcsecnumber,"%","= ",prcresult)
-            print()      
-
-        else:
-            print("Invalid Operation!")
-            print()    
+            if prcact == "+":
+                prcresult = prcfirnumber + prcfirnumber/100*prcsecnumber
+                print(f"Result: {prcfirnumber} + {prcsecnumber}% = {prcresult:.2f}\n")
+            elif prcact == "-":
+                prcresult = prcfirnumber - prcfirnumber/100*prcsecnumber
+                print(f"Result: {prcfirnumber} - {prcsecnumber}% = {prcresult:.2f}\n")
+            elif prcact == "*":
+                prcresult = prcfirnumber * (prcsecnumber / 100)
+                print(f"Result: {prcfirnumber} * {prcsecnumber}% = {prcresult:.2f}\n")
+            elif prcact == "/":
+                if prcsecnumber == 0:
+                    print("Error: Division by zero!\n")
+                else:
+                    prcresult = prcfirnumber / (prcsecnumber / 100)
+                    print(f"Result: {prcfirnumber} / {prcsecnumber}% = {prcresult:.2f}\n")
+            else:
+                print("Invalid Operation!\n")
+        except ValueError:
+            print("Error: Invalid input\n")
  
     while True:
         print("Select operation:")
@@ -123,7 +115,7 @@ def qalc():
                 y = int(input("Write second number: "))
 
         if action == 0:
-            sys.exit()
+            break
 
         if action == 1:
             add(x,y)
@@ -147,9 +139,9 @@ def qalc():
             factorial(x)
 
         if action == 8:
-            qes(x,y,z)
+            qes(0,0,0)
 
         if action == 9:
-            percentcal(x,y)
+            percentcal(0,0)
 
-qalc()                           
+qalc()
