@@ -1,138 +1,155 @@
 import sys
 import math
 
-print("It's a Qalc - Ver. 0.4")
-print("")
- 
-while True:
-    print("Select operation:")
-    print("1. Add")
-    print("2. Subtract")
-    print("3. Multiply")
-    print("4. Divide")
-    print("5. Power")
-    print("6. Root")
-    print("7. Factorial")
-    print("8. Quadratic Equation Solver")
-    print("9. Percent Calculator")
-    print("0. Exit")
+def qalc():
 
-    action = input("- ")
-    print()
+    print("It's a Qalc - Ver. 0.4")
+    print("")
 
-    try:
-        acval = int(action)
-    except ValueError:
-        continue
+    x = ()
+    y = ()
+    z = ()
 
-    if acval == 0:
-        sys.exit()
-
-    if acval < 1 or acval > 9:
-     sys.exit()
-
-    if acval in (1, 2, 3, 4, 5, 6, 7):
-        firstnumber = input("Write first number: ")
-        fnval = int(firstnumber)
-
-        if acval not in (6, 7, 9):
-            secondnumber = input("Write second number: ")
-            snval = int(secondnumber)
-     
-    if acval == 1:
-     print()
-     print("Result: ",firstnumber," + ",secondnumber," = ",fnval+snval)
-     print()  
-
-    if acval == 2:
-     print()
-     print("Result: ",firstnumber," - ",secondnumber," = ",fnval-snval)
-     print()  
-
-    if acval == 3:
-     print()
-     print("Result: ",firstnumber," * ",secondnumber," = ",fnval*snval)
-     print()  
-
-    if acval == 4:
-     print()
-     print("Result: ",firstnumber," / ",secondnumber," = ",fnval/snval) 
-     print()  
-
-    if acval == 5:
-     print()
-     print ("Result: ",firstnumber," ^ ",secondnumber," = ",fnval**snval)
-     print()  
-
-    if acval == 6:
-     print()
-     print ("Result: "," √",firstnumber," = ",math.sqrt(fnval))
-     print()      
- 
-    if acval == 7:
-     print()
-     print("Result: ", firstnumber, "!", " =", math.factorial(fnval))
-     print()
-	 
-    if acval == 8:
-     
-     aval = input("Input the A - ")
-     aval1 = int(aval)
-
-     bval = input("Input the B - ")
-     aval2 = int(bval)
-
-     cval = input("Input the C - ")
-     aval3 = int(cval)
-     
-     discr = aval2 ** 2 - 4 * aval1 * aval3 
-     print("Discriminant = %.2f" % discr)
-     print()
-
-     if discr > 0:
-        x1 = (-aval2 + math.sqrt(discr)) / (2*aval1)
-        x2 = (-aval2 - math.sqrt(discr)) / (2*aval1)
-        print("Two real roots:", x1,';', x2, "\n")
+    def add(x,y):
         print()
-     elif discr == 0:
-        x = -bval / (2*aval)
-        print("Single root:", x)
+        print(f"Result: ",x," + ",y," = ",x+y)
         print()
-     else:
-        print("No real roots (complex solutions exist)")
+
+    def subtract(x,y):
+        print()
+        print(f"Result: ",x," - ",y," = ",x-y)
+        print()
+
+    def multiply(x,y):
+        print()
+        print(f"Result: ",x," * ",y," = ",x*y)
+        print()
+
+    def divide(x,y):
+        print()
+        print(f"Result: ",x," / ",y," = ",x/y) 
+        print()
+
+    def power(x,y):
+        print()
+        print(f"Result: ",x," ^ ",y," = ",x**y)
+        print()
+
+    def root(x):
+        print()
+        print(f"Result: "," √",x," = ",math.sqrt(x))
+        print()
+
+    def factorial(x):
+        print()
+        print(f"Result: ", x, "!", " =", math.factorial(x))
+        print()
+
+    def qes(x,y,z):
+        x = int(input("Input the A - "))
+
+        y = int(input("Input the B - "))
+
+        z = int(input("Input the C - "))
+     
+        discr = y ** 2 - 4 * x * z 
+        print("Discriminant = %.2f" % discr)
+        print()
+
+        if discr > 0:
+            x1 = (-y + math.sqrt(discr)) / (2*x)
+            x2 = (-y - math.sqrt(discr)) / (2*x)
+            print("Two real roots:", x1,';', x2, "\n")
+            print()
+        elif discr == 0:
+            x3 = -y / (2*x)
+            print("Single root:", x3)
+            print()
+        else:
+            print("No real roots (complex solutions exist)")
+            print()
+
+    def percentcal(x,y):
+        prcfirnumber = int(input("Enter the first number(main) -  "))
+        prcact = input("Enter the action(+; -; *; /) -  ")
+
+        prcsecnumber = int(input("Enter the second number(percent) - "))
         print() 
 
-    if acval == 9:
-     
-     prcfirnumber = input("Enter the first number(main) -  ")
-     prcx = int(prcfirnumber)
+        if prcact == "+":
+            prcresult = prcfirnumber + prcfirnumber/100*prcsecnumber
+            print("Result: ",prcfirnumber,"+",prcsecnumber,"%","= ",prcresult)
+            print() 
 
-     prcact = input("Enter the action(+; -; *; /) -  ")
+        elif prcact == "-":
+            prcresult = prcfirnumber - prcfirnumber/100*prcsecnumber
+            print("Result: ",prcfirnumber,"-",prcsecnumber,"%","= ",prcresult)
+            print() 
 
-     prcsecnumber = input("Enter the second number(percent) - ")
-     prcxs = int(prcsecnumber)
-     print() 
+        elif prcact == "*":
+            prcresult = prcfirnumber * (prcsecnumber / 100)
+            print("Result: ",prcfirnumber,"*",prcsecnumber,"%","= ",prcresult)
+            print() 
 
-     if prcact == "+":
-       prcresult = prcx + prcx/100*prcxs
-       print("Result: ",prcx,"+",prcxs,"%","= ",prcresult)
-       print() 
+        elif prcact == "/":
+            prcresult = prcfirnumber / (prcsecnumber / 100)
+            print("Result: ",prcfirnumber,"/",prcsecnumber,"%","= ",prcresult)
+            print()      
 
-     elif prcact == "-":
-       prcresult = prcx - prcx/100*prcxs
-       print("Result: ",prcx,"-",prcxs,"%","= ",prcresult)
-       print() 
+        else:
+            print("Invalid Operation!")
+            print()    
+ 
+    while True:
+        print("Select operation:")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Power")
+        print("6. Root")
+        print("7. Factorial")
+        print("8. Quadratic Equation Solver")
+        print("9. Percent Calculator")
+        print("0. Exit")
 
-     elif prcact == "*":
-       prcresult = prcx * (prcxs / 100)
-       print("Result: ",prcx,"*",prcxs,"%","= ",prcresult)
-       print() 
+        action = int(input("- "))
+        print()
 
-     elif prcact == "/":
-       prcresult = prcx / (prcxs / 100)
-       print("Result: ",prcx,"/",prcxs,"%","= ",prcresult)
-       print()      
+        if action in (1, 2, 3, 4, 5, 6, 7):
+            x = int(input("Write first number: "))
 
-     else:
-       print("Invalid Operation!")
-       print()    
+            if action not in (6, 7, 9):
+                y = int(input("Write second number: "))
+
+        if action == 0:
+            sys.exit()
+
+        if action == 1:
+            add(x,y)
+         
+        if action == 2:
+            subtract(x,y)
+
+        if action == 3:
+            multiply(x,y)
+        
+        if action == 4:
+            divide(x,y)
+        
+        if action == 5:
+            power(x,y)
+
+        if action == 6:
+            root(x)
+
+        if action == 7:
+            factorial(x)
+
+        if action == 8:
+            qes(x,y,z)
+
+        if action == 9:
+            percentcal(x,y)
+
+qalc()                           
